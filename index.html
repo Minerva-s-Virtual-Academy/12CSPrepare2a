@@ -9,7 +9,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #222;
-            max-width: 800px;
+            max-width: 1100px; /* Wider layout for better screen space */
             margin: 20px auto;
             padding: 0 20px;
             background-color: #f9f9f9;
@@ -17,15 +17,43 @@
         
         .main-box {
             background: #ffffff;
-            padding: 30px;
+            padding: 40px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             border-top: 6px solid #007BA6;
         }
 
-        h1, h2, h3 { color: #007BA6; }
+        h1, h2, h3, h4 { color: #007BA6; }
         h1 { margin-top: 0; border-bottom: 2px solid #007BA6; padding-bottom: 10px; }
         
+        /* Top Navigation Menu */
+        .topic-menu {
+            background: #f1f5f9;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .menu-link {
+            background: #ffffff;
+            color: #007BA6;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9em;
+            border: 1px solid #cbd5e1;
+            transition: all 0.2s;
+        }
+        .menu-link:hover {
+            background: #007BA6;
+            color: #ffffff;
+            border-color: #007BA6;
+        }
+
         .info-card {
             background-color: #f4f9fb;
             border-left: 5px solid #007BA6;
@@ -50,13 +78,13 @@
             box-sizing: border-box;
         }
 
-        /* Simple Vertical Scrolling List for the Memory Steps */
+        /* Vertical Scrolling List for Memory Tiers */
         .memory-step {
             background: #fff;
             border: 1px solid #ddd;
             border-radius: 6px;
             padding: 20px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.02);
         }
         .step-1 { border-left: 5px solid #d32f2f; }
@@ -74,24 +102,23 @@
             margin-bottom: 10px;
         }
 
-        /* Question boxes */
-        .quiz-section {
-            margin-top: 40px;
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            padding: 25px;
-            border-radius: 8px;
+        /* Section blocks */
+        .lesson-section {
+            padding: 25px 0;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 30px;
         }
+
         .question-box {
             background: #f8fafc;
             border: 1px solid #cbd5e1;
-            padding: 15px;
+            padding: 20px;
             border-radius: 6px;
             margin-bottom: 20px;
         }
         textarea {
             width: 100%;
-            height: 70px;
+            height: 90px;
             margin-top: 10px;
             padding: 10px;
             border: 1px solid #ccc;
@@ -114,92 +141,131 @@
 
         .answer-box {
             display: none;
-            margin-top: 10px;
-            padding: 12px;
+            margin-top: 15px;
+            padding: 15px;
             background: #e8f5e9;
             color: #1b5e20;
             border-left: 4px solid #2e7d32;
             border-radius: 4px;
-            font-size: 0.9em;
+            font-size: 0.95em;
         }
     </style>
 </head>
 <body>
 
 <div class="main-box">
-    <h1>🧠 Learning Guide: Different Types of Computer Memory</h1>
+    <h1>🧠 Learning Guide: The Memory Hierarchy</h1>
     
+    <div class="topic-menu">
+        <a href="#video-section" class="menu-link">🎬 1. Video Briefing</a>
+        <a href="#reading-1" class="menu-link">📖 2. Fast Memory</a>
+        <a href="#retrieval-section" class="menu-link">📝 3. Quick Check</a>
+        <a href="#reading-2" class="menu-link">📖 4. Large Storage</a>
+        <a href="#exam-section" class="menu-link">🏅 5. Exam Practice</a>
+        <a href="#further-reading" class="menu-link">📚 6. Beyond the Lesson</a>
+    </div>
+
     <div class="info-card">
-        <strong>What we are learning today:</strong> Computers use different types of memory to store data. Some types are super fast but small, while others are huge but slow. Let's look at how they work together.
+        <strong>What we are learning today:</strong> Computer memory follows a simple rule: The closer memory is to the computer's brain (the CPU), the faster it works, but the smaller it has to be. Let's see how these different layers work together.
     </div>
 
-    <h2>📺 Step 1: Watch the Video</h2>
-    <p>Watch this short video to see how data moves around inside a computer.</p>
-    <div class="video-container">
-        [ PASTE YOUR PANOPTO / STUDIO / YOUTUBE VIDEO EMBED CODE HERE ]
+    <div id="video-section" class="lesson-section">
+        <h2>🎬 1. Studio Video Briefing</h2>
+        <p>Watch this short video to introduce how data flows between different hardware parts.</p>
+        <div class="video-container">
+            [ PASTE YOUR PANOPTO / CANVAS STUDIO / YOUTUBE EMBED CODE HERE ]
+        </div>
     </div>
 
-    <hr style="border: 0; border-top: 1px solid #eee; margin: 30px 0;">
+    <div id="reading-1" class="lesson-section">
+        <h2>📖 2. Reading Part 1: High-Speed Memory</h2>
+        <p>These two types of memory live directly inside or right next to the computer's brain. They help keep it running smoothly without dropping in performance.</p>
 
-    <h2>📐 Step 2: The 4 Main Types of Memory</h2>
-    <p>Scroll down to see the types of memory, starting from the fastest (at the top) to the slowest (at the bottom).</p>
+        <div class="memory-step step-1">
+            <span class="badge" style="background: #ffebee; color: #c62828;">🥇 1. CPU Registers</span>
+            <h3>The Immediate Workspaces</h3>
+            <p>These are tiny storage slots inside the CPU core itself. They hold only a single instruction or a small number at a time, working instantly with absolutely zero wait times.</p>
+            <p style="font-size: 0.9em; color: #555;">⚠️ <strong>Note:</strong> Everything inside here disappears the second the power turns off.</p>
+        </div>
 
-    <div class="memory-step step-1">
-        <span class="badge" style="background: #ffebee; color: #c62828;">🥇 1. Ultra Fast &amp; Tiny</span>
-        <h3>CPU Registers</h3>
-        <p>These are tiny storage slots located right inside the brain of the computer (the CPU). They only hold a few letters or numbers at a time, but they work instantly without any delays.</p>
-        <p style="font-size: 0.9em; color: #555;">⚠️ <strong>Note:</strong> If the computer turns off, everything inside here is instantly deleted.</p>
+        <div class="memory-step step-2">
+            <span class="badge" style="background: #fff3e0; color: #e65100;">🥈 2. Cache Memory (L1, L2, L3)</span>
+            <h3>The Frequently Used Buffer</h3>
+            <p>Cache holds instructions that the computer needs to reuse over and over. Instead of asking main memory for the same thing again and again, it checks the Cache first to save time.</p>
+            <p style="font-size: 0.9em; color: #555;">⚠️ <strong>Note:</strong> Just like registers, Cache is completely wiped clean when the computer shuts down.</p>
+        </div>
     </div>
 
-    <div class="memory-step step-2">
-        <span class="badge" style="background: #fff3e0; color: #e65100;">🥈 2. Very Fast &amp; Small</span>
-        <h3>Cache Memory</h3>
-        <p>Cache (pronounced "cash") sits right next to the computer's brain. It holds files and data that the computer needs to reuse over and over again so it doesn't have to waste time waiting.</p>
-        <p style="font-size: 0.9em; color: #555;">⚠️ <strong>Note:</strong> Just like registers, this memory clears completely when the power goes off.</p>
-    </div>
-
-    <div class="memory-step step-3">
-        <span class="badge" style="background: #fffde7; color: #f57f17;">🥉 3. Normal Speed &amp; Medium Size</span>
-        <h3>Main Memory (RAM)</h3>
-        <p>RAM holds the apps and games that you are using right now. When you open a web browser, it gets loaded into RAM. It is big enough to hold whole programs, but it is much slower than Cache.</p>
-        <p style="font-size: 0.9em; color: #555;">⚠️ <strong>Note:</strong> If your computer crashes or turns off, anything you haven't saved is lost from RAM.</p>
-    </div>
-
-    <div class="memory-step step-4">
-        <span class="badge" style="background: #e8f5e9; color: #1b5e20;">💾 4. Slow &amp; Huge</span>
-        <h3>Secondary Storage (SSD or Hard Drive)</h3>
-        <p>This is where all your files, photos, games, and files live long-term. It is much slower than the other types of memory, but it has tons of space.</p>
-        <p style="font-size: 0.9em; color: #555;">✅ <strong>Note:</strong> This is permanent. Everything stays safely saved here even when the computer is completely turned off.</p>
-    </div>
-
-    <hr style="border: 0; border-top: 1px solid #eee; margin: 30px 0;">
-
-    <div class="quiz-section">
-        <h2>📝 Step 3: Quick Check</h2>
-        <p>Type your thoughts in the boxes below to check what you remember. Click the green button to see the answer key.</p>
-
+    <div id="retrieval-section" class="lesson-section">
+        <h2>📝 3. Retrieval Checkpoint</h2>
+        <p>Let's take a quick moment to check your memory before we move down the pyramid.</p>
+        
         <div class="question-box">
-            <strong>Question 1: What happens to the data inside RAM when you turn off the computer?</strong>
+            <strong>Question: Which type of memory is faster: CPU Registers or Cache Memory? Why?</strong>
             <textarea placeholder="Type your answer here..."></textarea>
-            <button class="show-btn" onclick="toggleAnswer('a1')">Check Answer</button>
+            <button class="show-btn" onclick="toggleAnswer('a1')">Check My Answer</button>
             <div class="answer-box" id="a1">
-                <strong>Answer:</strong> Everything inside RAM gets deleted instantly when the power is turned off. That is why we have to save our work to the hard drive or SSD!
-            </div>
-        </div>
-
-        <div class="question-box">
-            <strong>Question 2: Why can't a computer just run everything directly from a huge, cheap hard drive?</strong>
-            <textarea placeholder="Type your answer here..."></textarea>
-            <button class="show-btn" onclick="toggleAnswer('a2')">Check Answer</button>
-            <div class="answer-box" id="a2">
-                <strong>Answer:</strong> Hard drives and SSDs are way too slow. If the computer's brain (the CPU) had to read directly from a hard drive all the time, your computer would freeze up and lag constantly.
+                <strong>Correct Answer:</strong> CPU Registers are faster. This is because they are located right inside the processing loops of the CPU, while Cache sits slightly further outside.
             </div>
         </div>
     </div>
+
+    <div id="reading-2" class="lesson-section">
+        <h2>📖 4. Reading Part 2: Main Memory and Permanent Storage</h2>
+        <p>As we move further away from the computer's brain, memory gets much bigger but runs significantly slower.</p>
+
+        <div class="memory-step step-3">
+            <span class="badge" style="background: #fffde7; color: #f57f17;">🥉 3. Main Memory (RAM)</span>
+            <h3>The Active Apps Space</h3>
+            <p>RAM holds any software, games, or files you are using right now. It has plenty of space to store large programs, but it is much slower than Cache or Registers.</p>
+            <p style="font-size: 0.9em; color: #555;">⚠️ <strong>Note:</strong> If your computer loses power, any unsaved work open in RAM is gone.</p>
+        </div>
+
+        <div class="memory-step step-4">
+            <span class="badge" style="background: #e8f5e9; color: #1b5e20;">💾 4. Secondary Storage</span>
+            <h3>The Permanent Archive (SSD or Hard Drive)</h3>
+            <p>This is your actual hard drive or solid-state drive (SSD). It has massive amounts of room for all your files, documents, and programs.</p>
+            <p style="font-size: 0.9em; color: #555;">✅ <strong>Note:</strong> This storage is permanent. Files stay safe here even when the computer is turned off completely.</p>
+        </div>
+    </div>
+
+    <div id="exam-section" class="lesson-section">
+        <h2>🏅 5. Exam-Style Question Practice</h2>
+        <p>Try answering this standard exam question to see how you feel about the topic.</p>
+
+        <div class="question-box" style="border: 1px solid #94a3b8;">
+            <h4>The Scenario:</h4>
+            <p style="font-style: italic; background: #ffffff; padding: 15px; border-radius: 4px; border: 1px solid #e2e8f0;">
+                "A student downloads a large presentation from the internet and saves it to their computer. Explain why the presentation must be moved into RAM when they want to open and edit it."
+            </p>
+            
+            <textarea placeholder="Write your explanation here..."></textarea>
+            <button class="show-btn" style="background: #2e7d32;" onclick="toggleAnswer('exam-feedback')">See Teacher Marking Feedback</button>
+            
+            <div class="answer-box" id="exam-feedback" style="background: #f0fdf4; color: #14532d; border-left-color: #2e7d32;">
+                <strong>Teacher Feedback Checklist — Check if your answer includes:</strong>
+                <ul>
+                    <li>An explanation that the hard drive/SSD (Secondary Storage) is too slow for the CPU to read from directly.</li>
+                    <li>A statement that files must be moved to RAM because RAM is fast enough to keep up with the CPU.</li>
+                    <li>The term <strong>volatile</strong> to describe RAM, or <strong>non-volatile</strong> to describe permanent storage.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="further-reading" class="lesson-section">
+        <h2>📚 6. Further Reading (Going Beyond)</h2>
+        <p>Want to see how this works in the real world? Here are some interesting concepts we will touch on later in the term:</p>
+        <ul>
+            <li><strong>Virtual Memory:</strong> What happens when your RAM fills up completely? The computer uses a trick to temporarily turn part of your slow hard drive into extra RAM space.</li>
+            <li><strong>Flash Storage vs. Magnetic Storage:</strong> Solid State Drives (SSDs) use electronic chips with no moving parts, which makes them much faster at moving data to RAM than older spinning hard disks.</li>
+        </ul>
+    </div>
+
 </div>
 
 <script>
-    // Simple show/hide script for the answers
+    // Simple script to toggle display boxes
     function toggleAnswer(id) {
         var box = document.getElementById(id);
         if (box.style.display === "block") {
