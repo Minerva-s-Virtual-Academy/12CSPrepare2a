@@ -3,346 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unit 1.2.1: The Memory Hierarchy Masterclass</title>
+    <title>Unit 1.2.1: Computer Memory Lesson</title>
     <style>
-        :root {
-            --primary-blue: #007BA6;
-            --dark-blue: #005a7a;
-            --accent-red: #d32f2f;
-            --accent-orange: #ef6c00;
-            --accent-yellow: #fbc02d;
-            --accent-green: #2e7d32;
-            --bg-light: #f4f9fb;
-        }
-
         body {
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f7f9fa;
-            margin: 0;
-            padding: 20px;
+            color: #222;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+            background-color: #f9f9f9;
         }
-
-        .workspace-container {
-            max-width: 1300px;
-            margin: 0 auto;
+        
+        .main-box {
             background: #ffffff;
-            padding: 40px;
-            border-left: 4px solid var(--primary-blue);
+            padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-top: 6px solid #007BA6;
         }
 
-        h1, h2, h3, h4 { color: var(--primary-blue); margin-top: 0; }
-        h1 { border-bottom: 2px solid var(--primary-blue); padding-bottom: 12px; }
-
-        .instruction-banner {
-            background-color: var(--bg-light);
-            border-left: 5px solid var(--primary-blue);
-            padding: 20px;
+        h1, h2, h3 { color: #007BA6; }
+        h1 { margin-top: 0; border-bottom: 2px solid #007BA6; padding-bottom: 10px; }
+        
+        .info-card {
+            background-color: #f4f9fb;
+            border-left: 5px solid #007BA6;
+            padding: 15px 20px;
+            margin: 20px 0;
             border-radius: 4px;
-            margin-bottom: 30px;
         }
 
-        /* Responsive Layout Grid */
-        .flex-grid {
-            display: flex;
-            gap: 30px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-
-        .col-half {
-            flex: 1;
-            min-width: 450px;
-        }
-
-        /* Video and Quizlet Embed Cards */
-        .media-card {
-            background: #fff;
-            border: 1px solid #e1e4e6;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-        }
-
-        .video-box {
+        .video-container {
+            background: #111;
+            color: #fff;
             width: 100%;
             aspect-ratio: 16/9;
-            background: #111;
             border-radius: 6px;
-            color: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
             text-align: center;
-        }
-
-        /* INTERACTIVE PYRAMID SYSTEM */
-        .pyramid-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            font-weight: bold;
             margin: 20px 0;
-            position: relative;
+            padding: 10px;
+            box-sizing: border-box;
         }
 
-        .pyramid-tier {
-            width: var(--width);
-            height: 60px;
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.2s ease-in-out;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            clip-path: polygon(var(--clip-left) 0%, var(--clip-right) 0%, 100% 100%, 0% 100%);
-            text-align: center;
-            font-size: 0.95em;
-        }
-
-        .pyramid-tier:hover {
-            transform: scale(1.03);
-            filter: brightness(1.1);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
-
-        /* Dynamic Readout Console */
-        .console-display {
-            background: #1e293b;
-            color: #f8fafc;
-            border-radius: 8px;
-            padding: 25px;
-            min-height: 180px;
-            border-left: 6px solid var(--primary-blue);
-            box-shadow: inset 0 2px 8px rgba(0,0,0,0.3);
-        }
-
-        .console-tag {
-            display: inline-block;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.75em;
-            font-weight: bold;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-
-        /* Knowledge Check Fields */
-        .quiz-suite {
-            background: var(--bg-light);
-            border: 1px solid #d0dfeb;
-            border-radius: 8px;
-            padding: 30px;
-            margin-top: 40px;
-        }
-
-        .qa-card {
+        /* Simple Vertical Scrolling List for the Memory Steps */
+        .memory-step {
             background: #fff;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #ddd;
             border-radius: 6px;
             padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+        .step-1 { border-left: 5px solid #d32f2f; }
+        .step-2 { border-left: 5px solid #ef6c00; }
+        .step-3 { border-left: 5px solid #fbc02d; }
+        .step-4 { border-left: 5px solid #2e7d32; }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            background: #eee;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        /* Question boxes */
+        .quiz-section {
+            margin-top: 40px;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            padding: 25px;
+            border-radius: 8px;
+        }
+        .question-box {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            padding: 15px;
+            border-radius: 6px;
             margin-bottom: 20px;
         }
-
         textarea {
             width: 100%;
-            height: 80px;
-            padding: 12px;
-            border: 1px solid #cbd5e1;
+            height: 70px;
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
             border-radius: 4px;
             font-family: inherit;
-            resize: vertical;
             box-sizing: border-box;
-            margin-top: 10px;
         }
-
-        .reveal-btn {
-            background: var(--primary-blue);
+        
+        .show-btn {
+            background: #007BA6;
             color: white;
             border: none;
-            padding: 8px 16px;
-            font-size: 0.85em;
-            font-weight: bold;
+            padding: 8px 14px;
             border-radius: 4px;
             cursor: pointer;
             margin-top: 10px;
-            transition: background 0.2s;
+            font-weight: bold;
         }
-        .reveal-btn:hover { background: var(--dark-blue); }
+        .show-btn:hover { background: #005a7a; }
 
-        .rubric-panel {
+        .answer-box {
             display: none;
-            margin-top: 15px;
-            padding: 15px;
-            background: #f0fdf4;
-            border-left: 4px solid var(--accent-green);
-            color: #166534;
-            border-radius: 0 4px 4px 0;
+            margin-top: 10px;
+            padding: 12px;
+            background: #e8f5e9;
+            color: #1b5e20;
+            border-left: 4px solid #2e7d32;
+            border-radius: 4px;
             font-size: 0.9em;
         }
     </style>
 </head>
 <body>
 
-<div class="workspace-container">
-    <h1>🧠 Unit 1.2.1 Flipped Learning: The Memory Hierarchy</h1>
+<div class="main-box">
+    <h1>🧠 Learning Guide: Different Types of Computer Memory</h1>
     
-    <div class="instruction-banner">
-        <strong>Flipped Masterclass Directive (Approx. 20 Minutes):</strong> Complete the preparation sequences below. Watch the instructional micro-briefing, interact directly with the hardware pyramid to map the hardware performance trade-offs, and test your retention using the retrieval engine before the live session.
+    <div class="info-card">
+        <strong>What we are learning today:</strong> Computers use different types of memory to store data. Some types are super fast but small, while others are huge but slow. Let's look at how they work together.
     </div>
 
-    <div class="flex-grid">
-        <div class="col-half">
-            <div class="media-card">
-                <h3>🎥 1. Core Concept Briefing</h3>
-                <p style="font-size: 0.85em; color:#666; margin-top:0;">Watch this targeted overview detailing cost versus performance barriers:</p>
-                <div class="video-box">
-                    [ PLACEHOLDER: INSERT YOUR PANOPTO / STUDIO / YOUTUBE EMBED IFRAME HERE ]
-                </div>
-            </div>
-        </div>
-        <div class="col-half">
-            <div class="media-card" style="border-top: 4px solid var(--accent-orange);">
-                <h3>⚡ 2. Active Retrieval Checkpoint</h3>
-                <p style="font-size: 0.85em; color:#666; margin-top:0;">Run through this deck to lock down crucial definitions from last week:</p>
-                <div class="video-box" style="background: #f1f5f9; color: var(--accent-orange); border: 2px dashed var(--accent-orange);">
-                    [ PLACEHOLDER: INSERT YOUR QUIZLET / MICRO-QUIZ EMBED IFRAME HERE ]
-                </div>
-            </div>
-        </div>
+    <h2>📺 Step 1: Watch the Video</h2>
+    <p>Watch this short video to see how data moves around inside a computer.</p>
+    <div class="video-container">
+        [ PASTE YOUR PANOPTO / STUDIO / YOUTUBE VIDEO EMBED CODE HERE ]
     </div>
 
-    <div class="flex-grid">
-        <div class="col-half">
-            <h3>📐 Interactive Memory Topology</h3>
-            <p style="font-size: 0.85em; color: #666; margin-bottom: 20px;"><strong>Instructions:</strong> Click on any segment of the hardware pyramid structure to probe its technical makeup and examine how location affects system latency.</p>
-            
-            <div style="text-align:center; font-size:0.75em; font-weight:bold; color:var(--accent-red); margin-bottom:4px;">▲ HIGHER TRANSFER SPEED &amp; FINANCIAL COST PER MB ▲</div>
-            
-            <div class="pyramid-container">
-                <div class="pyramid-tier" style="background: var(--accent-red); --width: 40%; --clip-left: 20%; --clip-right: 80%;" onclick="updateConsole('registers')">
-                    CPU Registers
-                </div>
-                <div class="pyramid-tier" style="background: var(--accent-orange); --width: 60%; --clip-left: 17%; --clip-right: 83%;" onclick="updateConsole('cache')">
-                    Cache Memory (L1 - L3)
-                </div>
-                <div class="pyramid-tier" style="background: var(--accent-yellow); color: #333; --width: 80%; --clip-left: 13%; --clip-right: 87%;" onclick="updateConsole('ram')">
-                    Main Memory (RAM)
-                </div>
-                <div class="pyramid-tier" style="background: var(--accent-green); --width: 100%; --clip-left: 0%; --clip-right: 100%;" onclick="updateConsole('secondary')">
-                    Secondary Storage Systems
-                </div>
-            </div>
-            
-            <div style="text-align:center; font-size:0.75em; font-weight:bold; color:var(--accent-green); margin-top:4px;">▼ LARGER COMPONENT STORAGE CAPACITY LIMITS ▼</div>
-        </div>
+    <hr style="border: 0; border-top: 1px solid #eee; margin: 30px 0;">
 
-        <div class="col-half" style="display:flex; flex-direction:column; justify-content:center;">
-            <h3>📟 Hardware Diagnostic Console</h3>
-            <div class="console-display" id="readout-box">
-                <div class="console-tag" style="background:#475569; color:#fff;">Status: Awaiting Node Input</div>
-                <h4 style="color:#60a5fa; margin: 5px 0;">Select a Pyramid Layer</h4>
-                <p style="color:#94a3b8; font-size: 0.9em; margin:0;">Click any tier of the architectural map on the left to safely inspect the hardware parameters directly from the system bus lines.</p>
-            </div>
-        </div>
+    <h2>📐 Step 2: The 4 Main Types of Memory</h2>
+    <p>Scroll down to see the types of memory, starting from the fastest (at the top) to the slowest (at the bottom).</p>
+
+    <div class="memory-step step-1">
+        <span class="badge" style="background: #ffebee; color: #c62828;">🥇 1. Ultra Fast &amp; Tiny</span>
+        <h3>CPU Registers</h3>
+        <p>These are tiny storage slots located right inside the brain of the computer (the CPU). They only hold a few letters or numbers at a time, but they work instantly without any delays.</p>
+        <p style="font-size: 0.9em; color: #555;">⚠️ <strong>Note:</strong> If the computer turns off, everything inside here is instantly deleted.</p>
     </div>
 
-    <div class="quiz-suite">
-        <h2>📝 Knowledge Verification Suite</h2>
-        <p style="font-size: 0.9em; margin-bottom: 25px;">Type your diagnostic answers below, then reveal the assessment rubric to verify your accuracy before class.</p>
+    <div class="memory-step step-2">
+        <span class="badge" style="background: #fff3e0; color: #e65100;">🥈 2. Very Fast &amp; Small</span>
+        <h3>Cache Memory</h3>
+        <p>Cache (pronounced "cash") sits right next to the computer's brain. It holds files and data that the computer needs to reuse over and over again so it doesn't have to waste time waiting.</p>
+        <p style="font-size: 0.9em; color: #555;">⚠️ <strong>Note:</strong> Just like registers, this memory clears completely when the power goes off.</p>
+    </div>
 
-        <div class="qa-card">
-            <strong>Q1: Why does a standard computer system require Secondary Storage if Main Memory (RAM) is significantly faster?</strong>
-            <textarea placeholder="Type your architectural reasoning here..."></textarea>
-            <button class="reveal-btn" onclick="toggleRubric('r1')">Toggle Examiner Mark Scheme</button>
-            <div class="rubric-panel" id="r1">
-                <strong>Expected Criteria:</strong> Main Memory (RAM) is fundamentally <strong>volatile</strong>, meaning it loses its state entirely when electrical current drops out. Secondary storage is strictly <strong>non-volatile</strong>, meaning it is required to permanently preserve application assets, files, and the OS system kernel long-term.
+    <div class="memory-step step-3">
+        <span class="badge" style="background: #fffde7; color: #f57f17;">🥉 3. Normal Speed &amp; Medium Size</span>
+        <h3>Main Memory (RAM)</h3>
+        <p>RAM holds the apps and games that you are using right now. When you open a web browser, it gets loaded into RAM. It is big enough to hold whole programs, but it is much slower than Cache.</p>
+        <p style="font-size: 0.9em; color: #555;">⚠️ <strong>Note:</strong> If your computer crashes or turns off, anything you haven't saved is lost from RAM.</p>
+    </div>
+
+    <div class="memory-step step-4">
+        <span class="badge" style="background: #e8f5e9; color: #1b5e20;">💾 4. Slow &amp; Huge</span>
+        <h3>Secondary Storage (SSD or Hard Drive)</h3>
+        <p>This is where all your files, photos, games, and files live long-term. It is much slower than the other types of memory, but it has tons of space.</p>
+        <p style="font-size: 0.9em; color: #555;">✅ <strong>Note:</strong> This is permanent. Everything stays safely saved here even when the computer is completely turned off.</p>
+    </div>
+
+    <hr style="border: 0; border-top: 1px solid #eee; margin: 30px 0;">
+
+    <div class="quiz-section">
+        <h2>📝 Step 3: Quick Check</h2>
+        <p>Type your thoughts in the boxes below to check what you remember. Click the green button to see the answer key.</p>
+
+        <div class="question-box">
+            <strong>Question 1: What happens to the data inside RAM when you turn off the computer?</strong>
+            <textarea placeholder="Type your answer here..."></textarea>
+            <button class="show-btn" onclick="toggleAnswer('a1')">Check Answer</button>
+            <div class="answer-box" id="a1">
+                <strong>Answer:</strong> Everything inside RAM gets deleted instantly when the power is turned off. That is why we have to save our work to the hard drive or SSD!
             </div>
         </div>
 
-        <div class="qa-card">
-            <strong>Q2: Explain how the use of high-speed Cache memory prevents the 'Von Neumann Bottleneck'.</strong>
-            <textarea placeholder="Type your analytical evaluation here..."></textarea>
-            <button class="reveal-btn" onclick="toggleRubric('r2')">Toggle Examiner Mark Scheme</button>
-            <div class="rubric-panel" id="r2">
-                <strong>Expected Criteria:</strong> The CPU runs much faster than the data bus lines reading from main memory. If the CPU had to fetch every instruction directly from RAM, it would spend most of its time idling (stalling). Cache stores frequently used instructions close to the core using fast <strong>SRAM</strong>, keeping the execution loop moving.
+        <div class="question-box">
+            <strong>Question 2: Why can't a computer just run everything directly from a huge, cheap hard drive?</strong>
+            <textarea placeholder="Type your answer here..."></textarea>
+            <button class="show-btn" onclick="toggleAnswer('a2')">Check Answer</button>
+            <div class="answer-box" id="a2">
+                <strong>Answer:</strong> Hard drives and SSDs are way too slow. If the computer's brain (the CPU) had to read directly from a hard drive all the time, your computer would freeze up and lag constantly.
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    // System Data Matrix for the Interactive Console
-    const hardwareDatabase = {
-        registers: {
-            title: "CPU Registers (PC, MAR, MDR, ACC)",
-            tagBg: "var(--accent-red)",
-            capacity: "A few dozen Bytes total",
-            speed: "Instantaneous (Matches Core Clock Speed)",
-            volatility: "Volatile (Requires constant power)",
-            tech: "Internal flip-flop logic circuits",
-            desc: "The absolute peak of the hierarchy. Registers are located directly inside the ALU and Control Unit layout. They hold the precise, active byte arguments currently undergoing computation. Zero data bus routing latency."
-        },
-        cache: {
-            title: "Static Cache Array (Levels 1, 2, 3)",
-            tagBg: "var(--accent-orange)",
-            capacity: "2MB to 64MB typical sharing structures",
-            speed: "Ultra-Fast (Minor wait states)",
-            volatility: "Volatile (Requires constant power)",
-            tech: "SRAM (Static Random Access Memory)",
-            desc: "Designed to stop processor cores from stalling. L1 is dedicated to individual cores, L2 bridges gaps, and L3 is shared across the entire dye matrix. It interceptively caches upcoming memory rows before the processor requests them."
-        },
-        ram: {
-            title: "Main Memory / System RAM",
-            tagBg: "var(--accent-yellow)",
-            capacity: "8GB to 64GB standard configurations",
-            speed: "Moderate (Subject to bus line bottlenecks)",
-            volatility: "Volatile (Requires constant power)",
-            tech: "DRAM (Dynamic Random Access Memory)",
-            desc: "Houses the active operating system modules, software instructions, and environment variables. Uses miniature capacitors that require constant recharging. Significantly slower than Cache, forcing the CPU to fetch over long bus pipelines."
-        },
-        secondary: {
-            title: "Non-Volatile Secondary Storage",
-            tagBg: "var(--accent-green)",
-            capacity: "256GB to many Terabytes",
-            speed: "Slow (Compared to processor speeds)",
-            volatility: "Non-Volatile (Preserves state without power)",
-            tech: "SSD (Flash Memory Gates), HDD (Magnetic Platter), Optical",
-            desc: "The solid foundation of the computer architecture. It safely houses all files, software installations, and digital resources while power is off. Operating systems must load files up into the primary RAM space before they can be executed."
-        }
-    };
-
-    // Console Update Routine
-    function updateConsole(layerKey) {
-        const data = hardwareDatabase[layerKey];
-        const consoleBox = document.getElementById('readout-box');
-        
-        consoleBox.innerHTML = `
-            <div class="console-tag" style="background: ${data.tagBg}; color: ${layerKey === 'ram' ? '#333' : '#fff'};">Node: ${layerKey} mapped</div>
-            <h3 style="color: #60a5fa; margin: 5px 0 10px 0;">${data.title}</h3>
-            <p style="margin: 4px 0; font-size:0.9em;"><strong>⚡ Access Speed:</strong> ${data.speed}</p>
-            <p style="margin: 4px 0; font-size:0.9em;"><strong>📦 Capacity Target:</strong> ${data.capacity}</p>
-            <p style="margin: 4px 0; font-size:0.9em;"><strong>🔌 Volatility Profile:</strong> ${data.volatility}</p>
-            <p style="margin: 4px 0; font-size:0.9em;"><strong>🛠️ Circuit Tech:</strong> ${data.tech}</p>
-            <p style="margin: 12px 0 0 0; font-size:0.88em; color: #cbd5e1; border-top: 1px solid #475569; padding-top: 10px; line-height:1.5;">${data.desc}</p>
-        `;
-    }
-
-    // Toggle Answer Rubrics
-    function toggleRubric(rubricId) {
-        const panel = document.getElementById(rubricId);
-        if (panel.style.display === "block") {
-            panel.style.display = "none";
+    // Simple show/hide script for the answers
+    function toggleAnswer(id) {
+        var box = document.getElementById(id);
+        if (box.style.display === "block") {
+            box.style.display = "none";
         } else {
-            panel.style.display = "block";
+            box.style.display = "block";
         }
     }
 </script>
