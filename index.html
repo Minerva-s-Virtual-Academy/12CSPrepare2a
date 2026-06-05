@@ -1,280 +1,127 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unit 1.2.1: Computer Memory Lesson</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #222;
-            max-width: 1100px; /* Wider layout for better screen space */
-            margin: 20px auto;
-            padding: 0 20px;
-            background-color: #f9f9f9;
-        }
-        
-        .main-box {
-            background: #ffffff;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            border-top: 6px solid #007BA6;
-        }
-
-        h1, h2, h3, h4 { color: #007BA6; }
-        h1 { margin-top: 0; border-bottom: 2px solid #007BA6; padding-bottom: 10px; }
-        
-        /* Top Navigation Menu */
-        .topic-menu {
-            background: #f1f5f9;
-            padding: 15px;
-            border-radius: 6px;
-            margin-bottom: 30px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-        }
-        .menu-link {
-            background: #ffffff;
-            color: #007BA6;
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 0.9em;
-            border: 1px solid #cbd5e1;
-            transition: all 0.2s;
-        }
-        .menu-link:hover {
-            background: #007BA6;
-            color: #ffffff;
-            border-color: #007BA6;
-        }
-
-        .info-card {
-            background-color: #f4f9fb;
-            border-left: 5px solid #007BA6;
-            padding: 15px 20px;
-            margin: 20px 0;
-            border-radius: 4px;
-        }
-
-        .video-container {
-            background: #111;
-            color: #fff;
-            width: 100%;
-            aspect-ratio: 16/9;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            font-weight: bold;
-            margin: 20px 0;
-            padding: 10px;
-            box-sizing: border-box;
-        }
-
-        /* Vertical Scrolling List for Memory Tiers */
-        .memory-step {
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
-        }
-        .step-1 { border-left: 5px solid #d32f2f; }
-        .step-2 { border-left: 5px solid #ef6c00; }
-        .step-3 { border-left: 5px solid #fbc02d; }
-        .step-4 { border-left: 5px solid #2e7d32; }
-
-        .badge {
-            display: inline-block;
-            padding: 4px 8px;
-            background: #eee;
-            border-radius: 4px;
-            font-size: 0.8em;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        /* Section blocks */
-        .lesson-section {
-            padding: 25px 0;
-            border-top: 1px solid #e2e8f0;
-            margin-top: 30px;
-        }
-
-        .question-box {
-            background: #f8fafc;
-            border: 1px solid #cbd5e1;
-            padding: 20px;
-            border-radius: 6px;
-            margin-bottom: 20px;
-        }
-        textarea {
-            width: 100%;
-            height: 90px;
-            margin-top: 10px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-family: inherit;
-            box-sizing: border-box;
-        }
-        
-        .show-btn {
-            background: #007BA6;
-            color: white;
-            border: none;
-            padding: 8px 14px;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-        .show-btn:hover { background: #005a7a; }
-
-        .answer-box {
-            display: none;
-            margin-top: 15px;
-            padding: 15px;
-            background: #e8f5e9;
-            color: #1b5e20;
-            border-left: 4px solid #2e7d32;
-            border-radius: 4px;
-            font-size: 0.95em;
-        }
-    </style>
-</head>
-<body>
-
-<div class="main-box">
-    <h1>🧠 Learning Guide: The Memory Hierarchy</h1>
+<div class="grid-row" style="display: flex; flex-wrap: wrap; align-items: flex-start; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 1200px; margin: 0 auto; padding: 20px;">
     
-    <div class="topic-menu">
-        <a href="#video-section" class="menu-link">🎬 1. Video Briefing</a>
-        <a href="#reading-1" class="menu-link">📖 2. Fast Memory</a>
-        <a href="#retrieval-section" class="menu-link">📝 3. Quick Check</a>
-        <a href="#reading-2" class="menu-link">📖 4. Large Storage</a>
-        <a href="#exam-section" class="menu-link">🏅 5. Exam Practice</a>
-        <a href="#further-reading" class="menu-link">📚 6. Beyond the Lesson</a>
-    </div>
-
-    <div class="info-card">
-        <strong>What we are learning today:</strong> Computer memory follows a simple rule: The closer memory is to the computer's brain (the CPU), the faster it works, but the smaller it has to be. Let's see how these different layers work together.
-    </div>
-
-    <div id="video-section" class="lesson-section">
-        <h2>🎬 1. Studio Video Briefing</h2>
-        <p>Watch this short video to introduce how data flows between different hardware parts.</p>
-        <div class="video-container">
-            [ PASTE YOUR PANOPTO / CANVAS STUDIO / YOUTUBE EMBED CODE HERE ]
+    <div class="col-xs-12 col-md-3" style="padding-right: 15px; min-width: 250px; box-sizing: border-box;">
+        <div class="list-group" style="border: 1px solid #007ba6; border-radius: 4px; overflow: hidden; position: sticky; top: 10px; background: white; z-index: 10; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+            <div style="background-color: #007ba6; color: white; padding: 12px; text-align: center; font-weight: bold;">Topic Navigation</div>
+            <a class="list-group-item" style="color: #007ba6; display: block; padding: 12px; border-bottom: 1px solid #eee; text-decoration: none;" href="#video">🎬 Video Tutorial</a> 
+            <a class="list-group-item" style="color: #007ba6; display: block; padding: 12px; border-bottom: 1px solid #eee; text-decoration: none;" href="#reading">📖 Core Reading</a> 
+            <a class="list-group-item" style="color: #007ba6; display: block; padding: 12px; border-bottom: 1px solid #eee; text-decoration: none;" href="#interactive">⚡ Interactive Task</a> 
+            <a class="list-group-item" style="color: #007ba6; display: block; padding: 12px; border-bottom: 1px solid #eee; text-decoration: none;" href="#deep-dive">🔍 Deep Dive</a> 
+            <a class="list-group-item" style="color: #007ba6; display: block; padding: 12px; border-bottom: 1px solid #eee; text-decoration: none;" href="#exam">🏅 Exam Practice</a> 
+            <a class="list-group-item" style="color: #007ba6; display: block; padding: 12px; text-decoration: none;" href="#further-reading">📚 Further Resources</a>
         </div>
     </div>
 
-    <div id="reading-1" class="lesson-section">
-        <h2>📖 2. Reading Part 1: High-Speed Memory</h2>
-        <p>These two types of memory live directly inside or right next to the computer's brain. They help keep it running smoothly without dropping in performance.</p>
-
-        <div class="memory-step step-1">
-            <span class="badge" style="background: #ffebee; color: #c62828;">🥇 1. CPU Registers</span>
-            <h3>The Immediate Workspaces</h3>
-            <p>These are tiny storage slots inside the CPU core itself. They hold only a single instruction or a small number at a time, working instantly with absolutely zero wait times.</p>
-            <p style="font-size: 0.9em; color: #555;">⚠️ <strong>Note:</strong> Everything inside here disappears the second the power turns off.</p>
-        </div>
-
-        <div class="memory-step step-2">
-            <span class="badge" style="background: #fff3e0; color: #e65100;">🥈 2. Cache Memory (L1, L2, L3)</span>
-            <h3>The Frequently Used Buffer</h3>
-            <p>Cache holds instructions that the computer needs to reuse over and over. Instead of asking main memory for the same thing again and again, it checks the Cache first to save time.</p>
-            <p style="font-size: 0.9em; color: #555;">⚠️ <strong>Note:</strong> Just like registers, Cache is completely wiped clean when the computer shuts down.</p>
-        </div>
-    </div>
-
-    <div id="retrieval-section" class="lesson-section">
-        <h2>📝 3. Retrieval Checkpoint</h2>
-        <p>Let's take a quick moment to check your memory before we move down the pyramid.</p>
+    <div class="col-xs-12 col-md-9" style="border-left: 2px solid #007BA6; padding-left: 30px; flex: 1; box-sizing: border-box; min-width: 300px;">
         
-        <div class="question-box">
-            <strong>Question: Which type of memory is faster: CPU Registers or Cache Memory? Why?</strong>
-            <textarea placeholder="Type your answer here..."></textarea>
-            <button class="show-btn" onclick="toggleAnswer('a1')">Check My Answer</button>
-            <div class="answer-box" id="a1">
-                <strong>Correct Answer:</strong> CPU Registers are faster. This is because they are located right inside the processing loops of the CPU, while Cache sits slightly further outside.
+        <div id="video" style="margin-bottom: 40px;">
+            <h2 style="color: #007ba6; margin-top: 0;">🎬 Video Tutorial</h2>
+            <p>Watch this short introductory video to see how different parts of a computer store data.</p>
+            <div style="width: 100%; aspect-ratio: 16/9; background-color: #eef2f5; border: 2px dashed #007ba6; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #007ba6; font-weight: bold; text-align: center; padding: 20px; box-sizing: border-box;">
+                PASTE YOUR STUDIO OR YOUTUBE EMBED CODE HERE
             </div>
         </div>
-    </div>
 
-    <div id="reading-2" class="lesson-section">
-        <h2>📖 4. Reading Part 2: Main Memory and Permanent Storage</h2>
-        <p>As we move further away from the computer's brain, memory gets much bigger but runs significantly slower.</p>
-
-        <div class="memory-step step-3">
-            <span class="badge" style="background: #fffde7; color: #f57f17;">🥉 3. Main Memory (RAM)</span>
-            <h3>The Active Apps Space</h3>
-            <p>RAM holds any software, games, or files you are using right now. It has plenty of space to store large programs, but it is much slower than Cache or Registers.</p>
-            <p style="font-size: 0.9em; color: #555;">⚠️ <strong>Note:</strong> If your computer loses power, any unsaved work open in RAM is gone.</p>
-        </div>
-
-        <div class="memory-step step-4">
-            <span class="badge" style="background: #e8f5e9; color: #1b5e20;">💾 4. Secondary Storage</span>
-            <h3>The Permanent Archive (SSD or Hard Drive)</h3>
-            <p>This is your actual hard drive or solid-state drive (SSD). It has massive amounts of room for all your files, documents, and programs.</p>
-            <p style="font-size: 0.9em; color: #555;">✅ <strong>Note:</strong> This storage is permanent. Files stay safe here even when the computer is turned off completely.</p>
-        </div>
-    </div>
-
-    <div id="exam-section" class="lesson-section">
-        <h2>🏅 5. Exam-Style Question Practice</h2>
-        <p>Try answering this standard exam question to see how you feel about the topic.</p>
-
-        <div class="question-box" style="border: 1px solid #94a3b8;">
-            <h4>The Scenario:</h4>
-            <p style="font-style: italic; background: #ffffff; padding: 15px; border-radius: 4px; border: 1px solid #e2e8f0;">
-                "A student downloads a large presentation from the internet and saves it to their computer. Explain why the presentation must be moved into RAM when they want to open and edit it."
-            </p>
+        <div id="reading" style="margin-bottom: 40px;">
+            <h2 style="color: #007ba6;">📖 Introduction &amp; Core Concepts</h2>
+            <p>Computers use different types of memory to do different jobs. Some types of memory are incredibly fast but small, while others are huge but quite slow.</p>
+            <p>The golden rule to remember is: <strong>The closer memory is to the computer's brain (the CPU), the faster it works, but the less space it has.</strong></p>
             
-            <textarea placeholder="Write your explanation here..."></textarea>
-            <button class="show-btn" style="background: #2e7d32;" onclick="toggleAnswer('exam-feedback')">See Teacher Marking Feedback</button>
-            
-            <div class="answer-box" id="exam-feedback" style="background: #f0fdf4; color: #14532d; border-left-color: #2e7d32;">
-                <strong>Teacher Feedback Checklist — Check if your answer includes:</strong>
-                <ul>
-                    <li>An explanation that the hard drive/SSD (Secondary Storage) is too slow for the CPU to read from directly.</li>
-                    <li>A statement that files must be moved to RAM because RAM is fast enough to keep up with the CPU.</li>
-                    <li>The term <strong>volatile</strong> to describe RAM, or <strong>non-volatile</strong> to describe permanent storage.</li>
-                </ul>
+            <div style="background-color: #f4f9fb; padding: 20px; border-radius: 8px; border-left: 5px solid #007ba6; margin-bottom: 20px;">
+                <h4 style="margin-top: 0; color: #007ba6;">💡 Key Definition: Volatile Memory</h4>
+                <p style="margin: 0;"><strong>Volatile</strong> means temporary. If memory is volatile, it clears out and deletes everything the exact second the computer loses power or gets turned off.</p>
+            </div>
+
+            <div style="background-color: #f4f9fb; padding: 20px; border-radius: 8px; border-left: 5px solid #007ba6; margin-bottom: 20px;">
+                <h4 style="margin-top: 0; color: #007ba6;">💡 Key Definition: Non-Volatile Memory</h4>
+                <p style="margin: 0;"><strong>Non-Volatile</strong> means permanent. This type of memory keeps your files and data safely saved even when the computer is completely unplugged.</p>
             </div>
         </div>
-    </div>
 
-    <div id="further-reading" class="lesson-section">
-        <h2>📚 6. Further Reading (Going Beyond)</h2>
-        <p>Want to see how this works in the real world? Here are some interesting concepts we will touch on later in the term:</p>
-        <ul>
-            <li><strong>Virtual Memory:</strong> What happens when your RAM fills up completely? The computer uses a trick to temporarily turn part of your slow hard drive into extra RAM space.</li>
-            <li><strong>Flash Storage vs. Magnetic Storage:</strong> Solid State Drives (SSDs) use electronic chips with no moving parts, which makes them much faster at moving data to RAM than older spinning hard disks.</li>
-        </ul>
-    </div>
+        <div id="interactive" style="margin-bottom: 40px;">
+            <h2 style="color: #007ba6;">⚡ Interactive Practice</h2>
+            <p>Use this quiz tool to practice using your memory words from last week before you move on.</p>
+            <div style="width: 100%; height: 400px; background-color: #f1f8e9; border: 2px dashed #2e7d32; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #2e7d32; font-weight: bold; text-align: center; padding: 20px; box-sizing: border-box;">
+                PASTE YOUR QUIZLET OR H5P EMBED CODE HERE
+            </div>
+        </div>
 
+        <div id="deep-dive" style="margin-bottom: 40px;">
+            <h2 style="color: #007ba6;">🔍 The Four Layers of Memory</h2>
+            <p>Scroll through the boxes below to see how memory changes from top to bottom.</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px;">
+                
+                <div style="padding: 15px; border: 1px solid #ddd; border-radius: 8px; background: white; border-top: 4px solid #d32f2f;">
+                    <strong style="color: #d32f2f;">🥇 1. CPU Registers</strong>
+                    <p style="font-size: 0.85em; margin-top: 10px; line-height: 1.5;">
+                        These are tiny storage slots built right inside the CPU core itself. They hold only one calculation at a time, but they have absolutely zero lag. 
+                    </p>
+                    <span style="font-size: 0.75em; background: #ffebee; color: #c62828; padding: 2px 6px; border-radius: 3px; font-weight: bold;">Temporary (Volatile)</span>
+                </div>
+
+                <div style="padding: 15px; border: 1px solid #ddd; border-radius: 8px; background: white; border-top: 4px solid #ef6c00;">
+                    <strong style="color: #ef6c00;">🥈 2. Cache Memory</strong>
+                    <p style="font-size: 0.85em; margin-top: 10px; line-height: 1.5;">
+                        Sits right next to the CPU. It saves copies of data you use frequently so the computer's brain doesn't have to keep fetching them from the slower main memory.
+                    </p>
+                    <span style="font-size: 0.75em; background: #fff3e0; color: #e65100; padding: 2px 6px; border-radius: 3px; font-weight: bold;">Temporary (Volatile)</span>
+                </div>
+
+                <div style="padding: 15px; border: 1px solid #ddd; border-radius: 8px; background: white; border-top: 4px solid #fbc02d;">
+                    <strong style="color: #fbc02d; background: #333; padding: 0 4px; border-radius: 3px;">🥉 3. Main Memory (RAM)</strong>
+                    <p style="font-size: 0.85em; margin-top: 10px; line-height: 1.5;">
+                        This holds the active applications and browser tabs you are using right now. It has a lot of room, but it is noticeably slower than Cache.
+                    </p>
+                    <span style="font-size: 0.75em; background: #fffde7; color: #f57f17; padding: 2px 6px; border-radius: 3px; font-weight: bold;">Temporary (Volatile)</span>
+                </div>
+
+                <div style="padding: 15px; border: 1px solid #ddd; border-radius: 8px; background: white; border-top: 4px solid #2e7d32;">
+                    <strong style="color: #2e7d32;">💾 4. Secondary Storage (SSD/HDD)</strong>
+                    <p style="font-size: 0.85em; margin-top: 10px; line-height: 1.5;">
+                        This is your actual hard drive where all your games, photos, and operating system files live long-term. It is slow, but massive.
+                    </p>
+                    <span style="font-size: 0.75em; background: #e8f5e9; color: #1b5e20; padding: 2px 6px; border-radius: 3px; font-weight: bold;">Permanent (Non-Volatile)</span>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="exam" style="margin-bottom: 40px; padding: 20px; background-color: #fdfdfd; border: 1px solid #eee; border-radius: 8px; box-shadow: inset 0 0 10px rgba(0,0,0,0.01);">
+            <h2 style="color: #007ba6; margin-top: 0;">🏅 Exam Practice</h2>
+            <p><strong>Question:</strong> A user downloads a large video file from the internet and saves it. Explain why the computer must copy that video data into RAM when the user clicks play.</p>
+            
+            <details style="border: 1px solid #007ba6; border-radius: 8px; background-color: white;">
+                <summary style="padding: 10px; cursor: pointer; font-weight: bold; color: #007ba6;">Click to View the Answer Steps</summary>
+                <div style="padding: 15px; border-top: 1px solid #eee;">
+                    <p style="margin-top: 0; font-weight: bold; color: #2e7d32;">Check your answer against these 3 key points:</p>
+                    <ul style="margin: 0; font-size: 0.9em; color: #2e7d32; list-style-type: square; padding-left: 20px;">
+                        <li>The hard drive/SSD (Secondary Storage) is too slow to feed data directly to the CPU.</li>
+                        <li>The video data must be moved into RAM because RAM is fast enough to keep up with the CPU.</li>
+                        <li>RAM is temporary (volatile), whereas the hard drive is permanent (non-volatile).</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+
+        <div id="further-reading" style="margin-top: 40px;">
+            <h2 style="color: #007ba6;">📚 Further Reading &amp; Resources</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                
+                <div style="padding: 20px; border: 1px solid #ddd; border-radius: 8px; background: #ffffff;">
+                    <h4 style="margin-top: 0; color: #007ba6;">What is Virtual Memory?</h4>
+                    <p style="font-size: 0.85em; color: #666;">Learn what happens when your computer runs out of RAM and has to pretend a piece of your hard drive is temporary memory.</p>
+                    <a style="color: #d32f2f; font-weight: bold; text-decoration: none; font-size: 0.9em;" href="#">&rarr; Explore BBC Bitesize</a>
+                </div>
+
+                <div style="padding: 20px; border: 1px solid #ddd; border-radius: 8px; background: #ffffff;">
+                    <h4 style="margin-top: 0; color: #007ba6;">SSDs vs Spinning Hard Drives</h4>
+                    <p style="font-size: 0.85em; color: #666;">A simple look at why modern solid-state chips open files much quicker than old magnetic disks with moving parts.</p>
+                    <a style="color: #d32f2f; font-weight: bold; text-decoration: none; font-size: 0.9em;" href="#">&rarr; Read the Comparison Guide</a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
 </div>
-
-<script>
-    // Simple script to toggle display boxes
-    function toggleAnswer(id) {
-        var box = document.getElementById(id);
-        if (box.style.display === "block") {
-            box.style.display = "none";
-        } else {
-            box.style.display = "block";
-        }
-    }
-</script>
-
-</body>
-</html>
